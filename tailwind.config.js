@@ -3,6 +3,9 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['"Cairo"', "sans-serif"],
+    },
     extend: {},
   },
   plugins: [],
