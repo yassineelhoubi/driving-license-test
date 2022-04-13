@@ -1,7 +1,15 @@
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+
+
 export const App=()=>{
     return (
-        <h1 className="text-3xl bg-red-400">
-        Hello world!
-      </h1>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+             </Routes> 
+        </Router>       
     )
 }
