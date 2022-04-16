@@ -43,7 +43,7 @@ export const Quiz = ({ subject, data }: any) => {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4 md:gap-8">
                     {answers && answers.map((answer: any) => (
-                        <Question key={answer} answer={answer} onClick={handleClick} />
+                        <Question key={answer} answer={answer} handleClick={handleClick} />
                     ))}
 
                 </div>

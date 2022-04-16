@@ -1,6 +1,7 @@
-export const Question = ({ answer }: any) => {
+export const Question = (props: any) => {
+    const {handleClick, answer} = props;
     return (
-        <div className="bg-gray-100 rounded-lg p-5">
+        <div className="bg-gray-100 rounded-lg p-5" onClick={() => {handleClick(answer)}}>
             <div className="flex justify-between items-center">
                 <h3 className="text-indigo-500 sm:text-lg md:text-xl font-semibold">{answer}</h3>
                 <span className="w-8 h-8 inline-flex justify-center items-center shrink-0 bg-gray-300 text-gray-500 rounded-full">
