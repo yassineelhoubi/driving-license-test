@@ -25,7 +25,7 @@ export const Quiz = ({ subject, data }: any) => {
         }
         if (count === 0) {
             if (testQuestions.length === questionIndex + 1) {
-                if (score > 1) {
+                if (score > 30) {
                     return setShowResult(true);
                 }
                 return navigate('/')
@@ -44,7 +44,7 @@ export const Quiz = ({ subject, data }: any) => {
         if (questionIndex < testQuestions.length - 1) {
             setQuestionIndex(questionIndex + 1);
             setCount(30);
-        } else if (score > 1) {
+        } else if (score > 30) {
             setShowResult(true);
         } else {
             navigate('/')
@@ -59,7 +59,7 @@ export const Quiz = ({ subject, data }: any) => {
                     <>
                         <div className="mb-10 md:mb-16">
                             <div className=" flex justify-between p-2 bg-gray-100 text-indigo-500 sm:text-lg md:text-xl font-semibold rounded-lg mb-10">
-                                <div className="" x-text="seconds">00:{count}</div>
+                                <div className="" x-text="seconds">00:{count < 10 ? "0" + count : count}</div>
                                 <div className="" x-text="seconds">{questionIndex + 1}/{testQuestions.length}</div>
                             </div>
                             <p className="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">{question.question}</p>
