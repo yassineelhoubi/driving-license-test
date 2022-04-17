@@ -9,12 +9,25 @@ export const Quiz = ({ subject, data }: any) => {
     const [score, setScore] = useState(0);
     const [showResult, setShowResult] = useState(false);
     useEffect(() => {
-        count > 0 && setTimeout(() => setCount(count - 1), 1000);
+        if (count > 0) {
+            let timer1 = setTimeout(() => {
+                setCount(count - 1)
+                console.log("inside setTimeout")
+            }, 1000)
+            return () => {
+                console.log("inside return")
+                clearTimeout(timer1);
+            };
+        }
         if (count === 0) {
+            if (testQuestions.length === questionIndex + 1) {
+                return navigate('/');
+            }
             setQuestionIndex(questionIndex + 1);
             setCount(30);
         }
     }, [count])
+    
     const testQuestions = data?.filter((item: any) => item.vehicletype === subject);
     const question = testQuestions[questionIndex];
     const answers = question.answer;
@@ -25,6 +38,7 @@ export const Quiz = ({ subject, data }: any) => {
         }
         if (questionIndex < testQuestions.length - 1) {
             setQuestionIndex(questionIndex + 1);
+            setCount(30);
         } else if (score > 30) {
             setShowResult(true);
         } else {
