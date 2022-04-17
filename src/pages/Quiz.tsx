@@ -10,7 +10,10 @@ export const Quiz = ({ subject, data }: any) => {
     const [showResult, setShowResult] = useState(false);
     useEffect(() => {
         count > 0 && setTimeout(() => setCount(count - 1), 1000);
-
+        if (count === 0) {
+            setQuestionIndex(questionIndex + 1);
+            setCount(30);
+        }
     }, [count])
     const testQuestions = data?.filter((item: any) => item.vehicletype === subject);
     const question = testQuestions[questionIndex];
@@ -19,7 +22,6 @@ export const Quiz = ({ subject, data }: any) => {
     const handleClick = (answer: any) => {
         if (answer === question.correctanswer) {
             setScore(score + 1);
-
         }
         if (questionIndex < testQuestions.length - 1) {
             setQuestionIndex(questionIndex + 1);
@@ -36,7 +38,7 @@ export const Quiz = ({ subject, data }: any) => {
             <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
                 <div className="mb-10 md:mb-16">
                     <div className=" flex justify-between p-2 bg-gray-100 text-indigo-500 sm:text-lg md:text-xl font-semibold rounded-lg mb-10">
-                        <div className="" x-text="seconds">{count}:00</div>
+                        <div className="" x-text="seconds">00:{count}</div>
                         <div className="" x-text="seconds">{questionIndex + 1}/{testQuestions.length}</div>
                     </div>
                     <p className="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">{question.question}</p>
